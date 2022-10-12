@@ -8,35 +8,55 @@ import {QUOTES} from './models/database'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
+  title :string= "Best Quotes"
+  add :string = "Add"
+  bestQuotes :string ="The Best"
+  worstQuotes :string = "The Worst"
+  ratingPlus :number = 0;
+  ratingMinus :number = 0;
+  counter :number
   author:string = ''
   sentence:string = ''
-  
+  plusButton: Boolean = false; 
 
   quotations: Quotation[] = [
     {
-      author: "Cody",
+      author: this.author,
       sentence: "Leń leń",
-      votes: 3
+      votes: 2
     },
     {
       author: "Ania",
       sentence: "Końik polny leń",
-      votes: 3
+      votes: 7
     },
     {
       author: "Barbara",
       sentence: "Leniwiec złośliwy",
-      votes: 3
+      votes: 1
     }
   ]
 
+  visibilityAddPanel(){
+    this.plusButton = !this.plusButton;
 
-  show(aut: string, sent: string){
-    this.author = aut,
-    this.sentence = sent
-
-    console.log('show: ' + this.author + this.sentence)
   }
 
+  addToList(){
+    const que: Quotation={
+      author: this.author,
+      sentence: this.sentence,
+      votes: 3
+    }
+    this.quotations.push(que)
+    this.author = '';
+    this.sentence = '';
+  }
+
+  dodaj(){
+    this.ratingPlus += 1;
+  }
+  odejmij(){
+    this.ratingMinus -= 1
+  }
 }

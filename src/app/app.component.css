@@ -1,0 +1,8 @@
+.edit-row{
+    transition: 0.5s ease-in-out;
+    transform: translateX(-200%);
+}
+
+.drawer{
+    transform: translateX(0) !important;
+}

@@ -1,17 +1,14 @@
-<!-- Nagłówek -->
 <nav>
   <div class="nav-wrapper teal darken-3">
-    <span class="brand-logo center">Najlepsze cytaty</span>
+    <span class="brand-logo center">{{title}}</span>
   </div>
 </nav>
-<!-- koniec nagłówka -->
 
 <div class="container q-container">
-  <!--Dodawanie cytatu-->
-  <button class="btn-floating teal add-button">
-    <i class="material-icons">add</i>
+  <button class="btn-floating teal add-button" (click)="visibilityAddPanel()">
+    <i class=" material-icons">add</i>
   </button>
-  <div class="row">
+  <div class="row edit-row" [class.drawer]="plusButton">
     <div class="input-field col s4">
       <input type="text" placeholder="Autor" [(ngModel)]='author' />
     </div>
@@ -19,17 +16,16 @@
       <input type="text" placeholder="Cytat" [(ngModel)]='sentence' />
     </div>
     <div class="input-field col s2">
-      <button class="btn small" (click)="show(author, sentence)"> Dodaj</button>
+      <button class="btn small" (click)="addToList(author, sentence)" [disabled]="authot == '' || sentence == ''">
+        {{add}}</button>
     </div>
   </div>
-  <!-- Koniec dodawanie cytatu -->
 
   <div class=" row">
-    <!-- Lista cytatów -->
     <div class="col s8">
       <div class="row">
         <div class="col s12">
-          <ng-container *ngFor="let que of quotations; let i = index">
+          <ng-container *ngFor="let que of quotations" addToList()>
             <div class="card teal accent-4 hoverable">
               <div class="card-content white-text">
                 <span class="card-title">
@@ -38,26 +34,26 @@
                 {{que.author}}
               </div>
               <div class="card-action right-align">
-                <span class="badge grey darken-2 left white-text">7</span>
-                <button class="btn blue mr-5">
-                  <i class="material-icons">exposure_plus_1</i>
+                <span class="badge grey darken-2 left white-text"> {{que.votes}}</span>
+                <button class="btn blue mr-5" (click)="dodaj()">
+                  <!-- <i class="material-icons">exposure_plus_1</i>  -->
+                  + {{ratingPlus}}
+
                 </button>
-                <button class="btn brown">
-                  <i class="material-icons">exposure_neg_1</i>
+                <button class="btn brown" (click)="odejmij()">
+                  <!-- <i class="material-icons">exposure_neg_1</i> -->
+                  {{ratingMinus}}
                 </button>
               </div>
             </div>
-
           </ng-container>
         </div>
       </div>
     </div>
-    <!-- Koniec lista cytatów -->
 
-    <!-- Sekcja rankigów -->
     <div class="col s4">
       <div class="col s12">
-        <h5>Najlepsze</h5>
+        <h5>{{bestQuotes}}</h5>
         <div class="collection">
           <p class="collection-item">
             <span class="blue lighten-4 badge">7</span>
@@ -67,7 +63,7 @@
         </div>
       </div>
       <div class="col s12">
-        <h5>Najgorsze</h5>
+        <h5>{{worstQuotes}}</h5>
         <div class="collection">
           <p class="collection-item">
             <span class="blue lighten-4 badge">-2</span>
@@ -77,6 +73,5 @@
         </div>
       </div>
     </div>
-    <!-- Sekcja rankigów -->
   </div>
 </div>
