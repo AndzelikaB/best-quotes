@@ -9,6 +9,7 @@
     <i class=" material-icons">add</i>
   </button>
   <div class="row edit-row" [class.drawer]="plusButton">
+    <!-- [ngClass]="{drawer: plusButton" -->
     <div class="input-field col s4">
       <input type="text" placeholder="Autor" [(ngModel)]='author' />
     </div>
@@ -25,28 +26,31 @@
     <div class="col s8">
       <div class="row">
         <div class="col s12">
-          <ng-container *ngFor="let que of quotations" addToList()>
-            <div class="card teal accent-4 hoverable">
-              <div class="card-content white-text">
-                <span class="card-title">
-                  {{que.sentence}}
-                </span>
-                {{que.author}}
-              </div>
-              <div class="card-action right-align">
-                <span class="badge grey darken-2 left white-text"> {{que.votes}}</span>
-                <button class="btn blue mr-5" (click)="dodaj()">
-                  <!-- <i class="material-icons">exposure_plus_1</i>  -->
-                  + {{ratingPlus}}
+          <div class="card teal hoverable" *ngFor="let que of quotations ; even as isEven ; odd as isOdd"
+            [ngClass]="{'accent-4': isEven, 'accent-5': isOdd}">
+            <!-- //[class.even]="even" -->
 
-                </button>
-                <button class="btn brown" (click)="odejmij()">
-                  <!-- <i class="material-icons">exposure_neg_1</i> -->
-                  {{ratingMinus}}
-                </button>
-              </div>
+            <div class="card-content white-text">
+              <span class="card-title">
+                {{que.sentence}}
+              </span>
+              {{que.author}}
             </div>
-          </ng-container>
+            <div class="card-action right-align">
+              <span class="badge grey darken-2 left white-text"> {{que.votes}}</span>
+              <button class="btn blue mr-5" (click)="dodaj()">
+                <!-- <i class="material-icons">exposure_plus_1</i>  -->
+                + {{ratingPlus}}
+
+              </button>
+              <button class="btn brown" (click)="odejmij()">
+                <!-- <i class="material-icons">exposure_neg_1</i> -->
+                {{ratingMinus}}
+              </button>
+            </div>
+          </div>
+
+
         </div>
       </div>
     </div>

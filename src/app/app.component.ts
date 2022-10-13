@@ -8,6 +8,7 @@ import {QUOTES} from './models/database'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  quotes  :Quotation[] = QUOTES;
   title :string= "Best Quotes"
   add :string = "Add"
   bestQuotes :string ="The Best"
@@ -21,7 +22,7 @@ export class AppComponent {
 
   quotations: Quotation[] = [
     {
-      author: this.author,
+      author: "Robert Bieroń",
       sentence: "Leń leń",
       votes: 2
     },
@@ -38,6 +39,7 @@ export class AppComponent {
   ]
 
   visibilityAddPanel(){
+    console.log('show: '+this.quotes)
     this.plusButton = !this.plusButton;
 
   }
