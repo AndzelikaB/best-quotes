@@ -9,15 +9,14 @@
     <i class=" material-icons">add</i>
   </button>
   <div class="row edit-row" [class.drawer]="plusButton">
-    <!-- [ngClass]="{drawer: plusButton" -->
     <div class="input-field col s4">
-      <input type="text" placeholder="Autor" [(ngModel)]='author' />
+      <input type="text" placeholder="Autor" [(ngModel)]='quotation.author' />
     </div>
     <div class="input-field col s6">
-      <input type="text" placeholder="Cytat" [(ngModel)]='sentence' />
+      <input type="text" placeholder="Cytat" [(ngModel)]='quotation.sentence' />
     </div>
     <div class="input-field col s2">
-      <button class="btn small" (click)="addToList(author, sentence)" [disabled]="authot == '' || sentence == ''">
+      <button class="btn small" (click)="addToList()" [disabled]="author == '' || sentence == ''">
         {{add}}</button>
     </div>
   </div>
@@ -26,31 +25,25 @@
     <div class="col s8">
       <div class="row">
         <div class="col s12">
-          <div class="card teal hoverable" *ngFor="let que of quotations ; even as isEven ; odd as isOdd"
-            [ngClass]="{'accent-4': isEven, 'accent-5': isOdd}">
-            <!-- //[class.even]="even" -->
-
+          <div class="card teal hoverable" *ngFor="let quotes of quotes ; odd as isOdd"
+            [ngClass]="isOdd ? 'accent-4' : 'accent-5'">
             <div class="card-content white-text">
               <span class="card-title">
-                {{que.sentence}}
+                {{quotes.sentence}}
               </span>
-              {{que.author}}
+              {{quotes.author}}
             </div>
             <div class="card-action right-align">
-              <span class="badge grey darken-2 left white-text"> {{que.votes}}</span>
-              <button class="btn blue mr-5" (click)="dodaj()">
-                <!-- <i class="material-icons">exposure_plus_1</i>  -->
-                + {{ratingPlus}}
+              <span class="badge grey darken-2 left white-text"> {{quotes.votes}}</span>
+              <button class="btn blue mr-5" (click)="addVote(quotes, +1)">
+                <i class="material-icons">exposure_plus_1</i>
 
               </button>
-              <button class="btn brown" (click)="odejmij()">
-                <!-- <i class="material-icons">exposure_neg_1</i> -->
-                {{ratingMinus}}
+              <button class="btn brown" (click)="addVote(quotes, -1)">
+                <i class="material-icons">exposure_neg_1</i>
               </button>
             </div>
           </div>
-
-
         </div>
       </div>
     </div>
@@ -59,21 +52,25 @@
       <div class="col s12">
         <h5>{{bestQuotes}}</h5>
         <div class="collection">
-          <p class="collection-item">
-            <span class="blue lighten-4 badge">7</span>
-            Jeśli nie chcesz mojej zguby, krrrokodyla daj mi luby.<br />
-            <span class="blue-text">Aleksander Fredro</span>
-          </p>
+          <ng-container *ngFor="let quotes of quotes">
+            <p class="collection-item" *ngIf="quotes.votes > 0">
+              <span class="blue lighten-4 badge">{{quotes.votes}}</span>
+              {{quotes.sentence}}<br />
+              <span class="blue-text">{{quotes.author}}</span>
+            </p>
+          </ng-container>
         </div>
       </div>
       <div class="col s12">
         <h5>{{worstQuotes}}</h5>
         <div class="collection">
-          <p class="collection-item">
-            <span class="blue lighten-4 badge">-2</span>
-            Bądź dobrej myśli, bo po co być złej.<br />
-            <span class="blue-text">Stanisław Lem</span>
-          </p>
+          <ng-container *ngFor="let quotes of quotes">
+            <p class="collection-item" *ngIf="quotes.votes < 0">
+              <span class="blue lighten-4 badge">{{quotes.votes}}</span>
+              {{quotes.sentence}}<br />
+              <span class="blue-text">{{quotes.author}}</span>
+            </p>
+          </ng-container>
         </div>
       </div>
     </div>

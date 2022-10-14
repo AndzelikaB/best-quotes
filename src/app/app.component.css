@@ -6,12 +6,3 @@
 .drawer{
     transform: translateX(0) !important;
 }
-
-.even {
-    background-color: wheat;
-  }
-  
-  .odd {
-    background-color: darkcyan;
-    color: white;
-  }

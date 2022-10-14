@@ -1,5 +1,5 @@
-export interface Quotation{
-    author: string,
-    sentence: string,
-    votes: number
+export interface IQuotation {
+  author: string;
+  sentence: string;
+  votes: number;
 }
