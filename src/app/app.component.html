@@ -25,21 +25,21 @@
     <div class="col s8">
       <div class="row">
         <div class="col s12">
-          <div class="card teal hoverable" *ngFor="let quotes of quotes ; odd as isOdd"
+          <div class="card teal hoverable" *ngFor="let quote of quotes ; odd as isOdd"
             [ngClass]="isOdd ? 'accent-4' : 'accent-5'">
             <div class="card-content white-text">
               <span class="card-title">
-                {{quotes.sentence}}
+                {{quote.sentence}}
               </span>
-              {{quotes.author}}
+              {{quote.author}}
             </div>
             <div class="card-action right-align">
-              <span class="badge grey darken-2 left white-text"> {{quotes.votes}}</span>
-              <button class="btn blue mr-5" (click)="addVote(quotes, +1)">
+              <span class="badge grey darken-2 left white-text"> {{quote.votes}}</span>
+              <button class="btn blue mr-5" (click)="addVote(quote, true)">
                 <i class="material-icons">exposure_plus_1</i>
 
               </button>
-              <button class="btn brown" (click)="addVote(quotes, -1)">
+              <button class="btn brown" (click)="addVote(quote, false)">
                 <i class="material-icons">exposure_neg_1</i>
               </button>
             </div>
@@ -52,11 +52,11 @@
       <div class="col s12">
         <h5>{{bestQuotes}}</h5>
         <div class="collection">
-          <ng-container *ngFor="let quotes of quotes">
-            <p class="collection-item" *ngIf="quotes.votes > 0">
-              <span class="blue lighten-4 badge">{{quotes.votes}}</span>
-              {{quotes.sentence}}<br />
-              <span class="blue-text">{{quotes.author}}</span>
+          <ng-container *ngFor="let quote of quotes">
+            <p class="collection-item" *ngIf="quote.votes > 0">
+              <span class="blue lighten-4 badge">{{quote.votes}}</span>
+              {{quote.sentence}}<br />
+              <span class="blue-text">{{quote.author}}</span>
             </p>
           </ng-container>
         </div>
@@ -64,11 +64,11 @@
       <div class="col s12">
         <h5>{{worstQuotes}}</h5>
         <div class="collection">
-          <ng-container *ngFor="let quotes of quotes">
-            <p class="collection-item" *ngIf="quotes.votes < 0">
-              <span class="blue lighten-4 badge">{{quotes.votes}}</span>
-              {{quotes.sentence}}<br />
-              <span class="blue-text">{{quotes.author}}</span>
+          <ng-container *ngFor="let quote of quotes">
+            <p class="collection-item" *ngIf="quote.votes < 0">
+              <span class="blue lighten-4 badge">{{quote.votes}}</span>
+              {{quote.sentence}}<br />
+              <span class="blue-text">{{quote.author}}</span>
             </p>
           </ng-container>
         </div>

@@ -26,7 +26,7 @@ export class AppComponent {
     this.quotation = { author: '', sentence: '', votes: 0 };
   }
 
-  addVote(quotation: IQuotation, value: number) {
-    quotation.votes += value;
+  addVote(quotation: IQuotation, addVote: boolean) {
+    quotation.votes = addVote ? quotation.votes + 1 : quotation.votes - 1;
   }
 }
