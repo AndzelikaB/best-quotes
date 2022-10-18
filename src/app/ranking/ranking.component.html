@@ -1,0 +1,10 @@
+<div class="col s12">
+  <h5>Najlepsze</h5>
+  <div class="collection">
+    <p class="collection-item" *ngFor="let quote of quotesR">
+      <span class="blue lighten-4 badge">{{quote.votes}}</span>
+      {{quote.sentence}}<br />
+      <span class="blue-text">{{quote.author}}</span>
+    </p>
+  </div>
+</div>

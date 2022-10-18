@@ -10,8 +10,8 @@ import { QUOTES } from './models/database';
 export class AppComponent {
   title: string = 'Best Quotes';
   add: string = 'Add';
-  bestQuotes: string = 'The Best';
-  worstQuotes: string = 'The Worst';
+  // bestQuotes: string = 'The Best';
+  // worstQuotes: string = 'The Worst';
 
   quotes: IQuotation[] = QUOTES;
   quotation: IQuotation = { author: '', sentence: '', votes: 0 };
@@ -28,5 +28,13 @@ export class AppComponent {
 
   addVote(quotation: IQuotation, addVote: boolean) {
     quotation.votes = addVote ? quotation.votes + 1 : quotation.votes - 1;
+  }
+
+  bestQuotes() {
+    return this.quotes.filter(q => q.votes > 0);
+  }
+
+  worstQuotes() {
+    return this.quotes.filter(q => q.votes < 0);
   }
 }

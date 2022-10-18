@@ -44,30 +44,8 @@
     </div>
 
     <div class="col s4">
-      <div class="col s12">
-        <h5>{{bestQuotes}}</h5>
-        <div class="collection">
-          <ng-container *ngFor="let quote of quotes">
-            <p class="collection-item" *ngIf="quote.votes > 0">
-              <span class="blue lighten-4 badge">{{quote.votes}}</span>
-              {{quote.sentence}}<br />
-              <span class="blue-text">{{quote.author}}</span>
-            </p>
-          </ng-container>
-        </div>
-      </div>
-      <div class="col s12">
-        <h5>{{worstQuotes}}</h5>
-        <div class="collection">
-          <ng-container *ngFor="let quote of quotes">
-            <p class="collection-item" *ngIf="quote.votes < 0">
-              <span class="blue lighten-4 badge">{{quote.votes}}</span>
-              {{quote.sentence}}<br />
-              <span class="blue-text">{{quote.author}}</span>
-            </p>
-          </ng-container>
-        </div>
-      </div>
+      <app-ranking [quotesR]="bestQuotes()"></app-ranking>
+      <app-ranking [quotesR]="worstQuotes()"></app-ranking>
     </div>
   </div>
 </div>
