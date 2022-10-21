@@ -1,0 +1,12 @@
+<div class="row edit-row" [class.drawer]="plusButton">
+  <div class="input-field col s4">
+    <input type="text" placeholder="Autor" [(ngModel)]='quotation.author' />
+  </div>
+  <div class="input-field col s6">
+    <input type="text" placeholder="Cytat" [(ngModel)]='quotation.sentence' />
+  </div>
+  <div class="input-field col s2">
+    <button class="btn small" (click)="addToList()" [disabled]="author == '' || sentence == ''">
+      {{add}}</button>
+  </div>
+</div>

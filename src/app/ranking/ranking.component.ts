@@ -7,6 +7,6 @@ import { IQuotation } from '../models/quotation';
   styleUrls: ['./ranking.component.css'],
 })
 export class RankingComponent {
-  @Input()
-  quotesR: IQuotation[];
+  @Input() quotesR: IQuotation[];
+  @Input() title: string;
 }
