@@ -1,9 +1,9 @@
 <app-navbar title="Best Quotations"></app-navbar>
 <div class="container q-container">
-  <button class="btn-floating teal add-button">
+  <button class="btn-floating teal add-button" (click)="form.visibilityAddPanel()">
     <i class=" material-icons">add</i>
   </button>
-  <app-form (newQuotation)="onNewQuotation($event)"> </app-form>
+  <app-form (newQuotation)="onNewQuotation($event)" #form> </app-form>
 
   <div class=" row">
     <div class="col s8">
