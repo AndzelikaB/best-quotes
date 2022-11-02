@@ -1,8 +1,9 @@
 <app-navbar title="Best Quotations"></app-navbar>
 <div class="container q-container">
-  <button class="btn-floating teal add-button" (click)="form.visibilityAddPanel()">
+  <app-button customClasses="btn-floating teal add-button" clickButton="form.visibilityAddPanel()">
     <i class=" material-icons">add</i>
-  </button>
+
+  </app-button>
   <app-form (newQuotation)="onNewQuotation($event)" #form> </app-form>
 
   <div class=" row">
@@ -19,13 +20,14 @@
             </div>
             <div class="card-action right-align">
               <span class="badge grey darken-2 left white-text"> {{quote.votes}}</span>
-              <button class="btn blue mr-5" (click)="addVote(quote, true)">
-                <i class="material-icons">exposure_plus_1</i>
 
-              </button>
-              <button class="btn brown" (click)="addVote(quote, false)">
+              <app-button customClasses="btn blue mr-5" (click)="addVote(quote, true)">
+                <i class="material-icons">exposure_plus_1</i>
+              </app-button>
+
+              <app-button customClasses="btn brown" (click)="addVote(quote, false)">
                 <i class="material-icons">exposure_neg_1</i>
-              </button>
+              </app-button>
             </div>
           </div>
         </div>
