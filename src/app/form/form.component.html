@@ -7,10 +7,9 @@
   </div>
   <div class="input-field col s2">
     <!-- <button class="btn small" (click)="addToList()" [disabled]="author == '' || sentence == ''">
-      {{add}}</button> -->
+      {{add}}</button> // czemy disabled nid moze byc  -->
 
-
-    <app-button customClasses="btn small" (click)="addToList()" [disabled]="author == '' || sentence == ''">
+    <app-button customClasses="btn small" (clickButton)="addToList()">
       {{add}}
     </app-button>
   </div>
