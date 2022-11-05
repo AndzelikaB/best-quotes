@@ -7,6 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { FormComponent } from './form/form.component';
 import { ButtonComponent } from './button/button.component';
+import { VoteButtonsComponent } from './vote-buttons/vote-buttons.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ButtonComponent } from './button/button.component';
     NavbarComponent,
     RankingComponent,
     FormComponent,
-    ButtonComponent
+    ButtonComponent,
+    VoteButtonsComponent
   ],
   imports: [
     BrowserModule, FormsModule

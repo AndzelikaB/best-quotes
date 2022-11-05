@@ -1,0 +1,7 @@
+<app-button [class]="classPlus" (click)="voteValue.emit(true)">
+  <ng-content select="[votePlus]"></ng-content>
+</app-button>
+
+<app-button [class]="classMinus" (click)="voteValue.emit(false)">
+  <ng-content select="[voteMinus]"></ng-content>
+</app-button>
