@@ -1,7 +1,7 @@
-<app-button [class]="classPlus" (click)="voteValue.emit(true)">
-  <ng-content select="[votePlus]"></ng-content>
+<app-button customClasses="btn blue mr-5" (click)="voteValue.emit(true)">
+  <i class=" material-icons" votePlus>exposure_plus_1</i>
 </app-button>
 
-<app-button [class]="classMinus" (click)="voteValue.emit(false)">
-  <ng-content select="[voteMinus]"></ng-content>
+<app-button customClasses="btn brown" (click)="voteValue.emit(false)">
+  <i class="material-icons" voteMinus>exposure_neg_1</i>
 </app-button>

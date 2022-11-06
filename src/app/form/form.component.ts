@@ -8,7 +8,7 @@ import { IQuotation } from '../models/quotation';
 })
 export class FormComponent {
   @Output() newQuotation = new EventEmitter<IQuotation>();
-  plusButton: boolean = true;
+  plusButton: boolean = false;
   add: string = 'Add';
   quotation: IQuotation = { author: '', sentence: '', votes: 0 };
 
