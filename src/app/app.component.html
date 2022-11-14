@@ -1,13 +1,12 @@
 <app-navbar title="Best Quotations"></app-navbar>
 <div class="container q-container">
-
   <app-button customClasses="btn-floating teal add-button" (clickButton)="form.visibilityAddPanel()">
-    <i class=" material-icons">add</i>
+    <i class="material-icons">add</i>
   </app-button>
 
   <app-form (newQuotation)="onNewQuotation($event)" #form> </app-form>
 
-  <div class=" row">
+  <div class="row">
     <div class="col s8">
       <app-list [quotes]="quotes" (vote)="addVote($event.quotation, $event.value)"> </app-list>
     </div>
