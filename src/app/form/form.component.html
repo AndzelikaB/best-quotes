@@ -6,9 +6,6 @@
     <input type="text" placeholder="Cytat" [(ngModel)]='quotation.sentence' />
   </div>
   <div class="input-field col s2">
-    <!-- <button class="btn small" (click)="addToList()" [disabled]="author == '' || sentence == ''">
-      {{add}}</button> // czemy disabled nid moze byc  -->
-
     <app-button customClasses="btn small" (clickButton)="addToList()">
       {{add}}
     </app-button>

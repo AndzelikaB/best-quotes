@@ -1,0 +1,18 @@
+<div class="col s12">
+  <div class="card teal hoverable" *ngFor="let quote of bazaCytatow ; odd as isOdd"
+    [ngClass]="isOdd ? 'accent-4' : 'accent-5'">
+    <div class="card-content white-text">
+      <span class="card-title">
+        {{quote.sentence}}
+      </span>
+      {{quote.author}}
+    </div>
+    <div class="card-action right-align">
+      <span class="badge grey darken-2 left white-text"> {{quote.votes}}</span>
+      <app-vote-buttons classPlus="btn blue mr-5" classMinus="btn brown" (voteValue)="addVote(quote, $event)">
+        <i class=" material-icons" votePlus>exposure_plus_1</i>
+        <i class="material-icons" voteMinus>exposure_neg_1</i>
+      </app-vote-buttons>
+    </div>
+  </div>
+</div>
