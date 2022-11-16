@@ -10,8 +10,9 @@ import { QUOTES } from './models/database';
 export class AppComponent {
   quotes: IQuotation[] = QUOTES;
 
-  addVote(quotation: IQuotation, addVote: boolean) {
-    quotation.votes = addVote ? quotation.votes + 1 : quotation.votes - 1;
+  addVote(quotation: IQuotation, value: boolean) {
+    console.log(value);
+    quotation.votes = value ? quotation.votes + 1 : quotation.votes - 1;
   }
 
   bestQuotes() {

@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { QUOTES } from '../models/database';
 import { IQuotation } from '../models/quotation';
 
 @Component({
@@ -9,14 +8,14 @@ import { IQuotation } from '../models/quotation';
 })
 export class ListComponent {
   @Output() vote = new EventEmitter<QuotationEvent>();
-  @Input() quotes: IQuotation[] = QUOTES;
+  @Input() quotes: IQuotation[];
 
-  addVote(quotation: IQuotation, addVote: boolean) {
-    this.vote.emit({ quotation, addVote });
+  addVote(quotation: IQuotation, value: boolean) {
+    this.vote.emit({ quotation, value });
   }
 }
 
 export interface QuotationEvent {
   quotation: IQuotation;
-  addVote: boolean;
+  value: boolean;
 }
